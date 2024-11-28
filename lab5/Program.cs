@@ -5,25 +5,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Упражнение 6.2: Умножение матриц");
+        Console.WriteLine("Упражнение 6.2. Матрицы");
         PerformExercise6_2();
-        Console.WriteLine("\nУпражнение 6.3: Средняя температура");
+        Console.WriteLine("Упражнение 6.3. Вычисление средней температуры");
         PerformExercise6_3();
-        Console.WriteLine("\nДомашнее задание 6.2: Умножение матриц с использованием коллекций");
+        Console.WriteLine("Домашнее задание 6.2. Умножение матриц с использованием коллекций");
         PerformHomework6_2();
-        Console.WriteLine("\nДомашнее задание 6.3: Средняя температура с использованием Dictionary");
+        Console.WriteLine("Домашнее задание 6.3. Средняя температура (Dictionary)");
         PerformHomework6_3();
     }
 
     // Упражнение 6.2 Матрицы
     static void PerformExercise6_2()
     {
-        Console.WriteLine("Введите размеры матрицы A (строки и столбцы через enter):");
+        Console.WriteLine("Введите размеры матрицы A (строки и столбцы):");
         int aRows = int.Parse(Console.ReadLine());
         int aCols = int.Parse(Console.ReadLine());
         int[,] matrixA = new int[aRows, aCols];
 
-        Console.WriteLine("Введите элементы матрицы A (через enter):");
+        Console.WriteLine("Введите элементы матрицы A:");
         for (int i = 0; i < aRows; i++)
         {
             for (int j = 0; j < aCols; j++)
@@ -32,7 +32,7 @@ class Program
             }
         }
 
-        Console.WriteLine("Введите размеры матрицы B (строки):");
+        Console.WriteLine("Введите размеры матрицы B (строки и столбцы):");
         int bCols = int.Parse(Console.ReadLine());
         int[,] matrixB = new int[aCols, bCols];
 
@@ -82,19 +82,17 @@ class Program
         }
     }
 
-    // Упражнение 6.3 Средняя температура
+    // Упражнение 6.3 Средние температуры
     static void PerformExercise6_3()
     {
         double[,] temperatures = GenerateRandomTemperatures();
         Console.WriteLine("Средние температуры по месяцам");
         double[] averageTemps = new double[12];
-
         for (int month = 0; month < 12; month++)
         {
             averageTemps[month] = CalculateAverage(temperatures, month);
             Console.WriteLine($"Средняя температура в месяце {GetMonthName(month)}: {averageTemps[month]:F2}");
         }
-
         Array.Sort(averageTemps);
         Console.WriteLine("Отсортированные средние температуры:");
         foreach (var temp in averageTemps)
@@ -107,7 +105,6 @@ class Program
     {
         double[,] temperatures = new double[12, 30];
         Random rand = new Random();
-
         for (int month = 0; month < 12; month++)
         {
             for (int day = 0; day < 30; day++)
@@ -131,48 +128,78 @@ class Program
     {
         switch (month)
         {
-            case 0: return "Январь";
-            case 1: return "Февраль";
-            case 2: return "Март";
-            case 3: return "Апрель";
-            case 4: return "Май";
-            case 5: return "Июнь";
-            case 6: return "Июль";
-            case 7: return "Август";
-            case 8: return "Сентябрь";
-            case 9: return "Октябрь";
-            case 10: return "Ноябрь";
-            case 11: return "Декабрь";
-            default: return null;
+            case 0: 
+                return "Январь";
+            case 1: 
+                return "Февраль";
+            case 2: 
+                return "Март";
+            case 3: 
+                return "Апрель";
+            case 4: 
+                return "Май";
+            case 5: 
+                return "Июнь";
+            case 6: 
+                return "Июль";
+            case 7: 
+                return "Август";
+            case 8: 
+                return "Сентябрь";
+            case 9: 
+                return "Октябрь";
+            case 10: 
+                return "Ноябрь";
+            case 11: 
+                return "Декабрь";
+            default: 
+                return null;
         }
     }
 
     // Домашнее задание 6.2 Матрицы LinkedList
     static void PerformHomework6_2()
     {
-        var tasks = new LinkedList<LinkedList<string>>();
-        Console.WriteLine("Введите количество заданий:");
-        int taskCount = int.Parse(Console.ReadLine());
+        var tasks = new LinkedList<string>();
 
-        for (int i = 1; i <= taskCount; i++)
+        // Запрос размеров и элементов матриц от пользователя
+        Console.WriteLine("Введите размеры матрицы A (строки и столбцы через enter):");
+        int aRows = int.Parse(Console.ReadLine());
+        int aCols = int.Parse(Console.ReadLine());
+        int[,] matrixA = new int[aRows, aCols];
+
+        Console.WriteLine("Введите элементы матрицы A:");
+        for (int i = 0; i < aRows; i++)
         {
-            Console.Write($"Введите описание задания {i}: ");
-            var taskDetails = new LinkedList<string>();
-            taskDetails.AddLast(Console.ReadLine());
-            tasks.AddLast(taskDetails);
+            for (int j = 0; j < aCols; j++)
+            {
+                matrixA[i, j] = int.Parse(Console.ReadLine());
+            }
         }
 
-        Console.WriteLine("Список заданий:");
+        Console.WriteLine("Введите размеры матрицы B (строки):");
+        int bCols = int.Parse(Console.ReadLine());
+        int[,] matrixB = new int[aCols, bCols];
+
+        Console.WriteLine("Введите элементы матрицы B:");
+        for (int i = 0; i < aCols; i++)
+        {
+            for (int j = 0; j < bCols; j++)
+            {
+                matrixB[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        int[,] resultMatrix = MultiplyMatrices(matrixA, matrixB);
+        tasks.AddLast("Результат умножения матриц");
+        PrintMatrix(resultMatrix);
         foreach (var task in tasks)
         {
-            foreach (var detail in task)
-            {
-                Console.WriteLine(detail);
-            }
+            Console.WriteLine(task);
         }
     }
 
-    // Домашнее задание 6.3 Средние температуры Dictionary
+    // Домашнее задание 6.3: Средняя температура с использованием Dictionary
     static void PerformHomework6_3()
     {
         var monthlyTemps = new Dictionary<string, double[]>();
@@ -188,7 +215,7 @@ class Program
             monthlyTemps.Add(GetMonthName(month), dailyTemps);
         }
 
-        Console.WriteLine("Средние температуры по месяцам");
+        Console.WriteLine("Средние температуры по месяцам:");
         foreach (var monthData in monthlyTemps)
         {
             double averageTemp = CalculateAverage(monthData.Value);
