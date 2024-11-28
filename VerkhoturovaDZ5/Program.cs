@@ -53,6 +53,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("Задание 5");
         Queue<Babulya> babushkiQueue = new Queue<Babulya>();
         Stack<Bolnitsa> bolnitsyStack = new Stack<Bolnitsa>();
 
@@ -62,7 +63,7 @@ class Program
 
         for (int i = 0; i < 3; i++)
         {
-            Console.Write("Введите имя бабушки: ");
+            Console.Write("Введите имя бабушки(всего 3): ");
             string name = Console.ReadLine();
 
             Console.Write("Введите возраст бабушки: ");
@@ -116,7 +117,7 @@ class Program
                 Console.WriteLine($"{currentBabulya.Name} осталась на улице плакать.");
             }
         }
-        // Вывод информации о больницах
+
         Console.WriteLine("Информация о больницах:");
         foreach (Bolnitsa bolnitsa in bolnitsyStack)
         {
