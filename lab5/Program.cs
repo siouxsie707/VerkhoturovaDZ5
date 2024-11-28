@@ -23,7 +23,7 @@ class Program
         int aCols = int.Parse(Console.ReadLine());
         int[,] matrixA = new int[aRows, aCols];
 
-        Console.WriteLine("Введите элементы матрицы A:");
+        Console.WriteLine("Введите элементы матрицы A (через enter):");
         for (int i = 0; i < aRows; i++)
         {
             for (int j = 0; j < aCols; j++)
@@ -36,7 +36,7 @@ class Program
         int bCols = int.Parse(Console.ReadLine());
         int[,] matrixB = new int[aCols, bCols];
 
-        Console.WriteLine("Введите элементы матрицы B:");
+        Console.WriteLine("Введите элементы матрицы B (через enter):");
         for (int i = 0; i < aCols; i++)
         {
             for (int j = 0; j < bCols; j++)
@@ -168,7 +168,7 @@ class Program
         int aCols = int.Parse(Console.ReadLine());
         int[,] matrixA = new int[aRows, aCols];
 
-        Console.WriteLine("Введите элементы матрицы A:");
+        Console.WriteLine("Введите элементы матрицы A (через enter):");
         for (int i = 0; i < aRows; i++)
         {
             for (int j = 0; j < aCols; j++)
@@ -181,7 +181,7 @@ class Program
         int bCols = int.Parse(Console.ReadLine());
         int[,] matrixB = new int[aCols, bCols];
 
-        Console.WriteLine("Введите элементы матрицы B:");
+        Console.WriteLine("Введите элементы матрицы B (через enter):");
         for (int i = 0; i < aCols; i++)
         {
             for (int j = 0; j < bCols; j++)
@@ -191,7 +191,7 @@ class Program
         }
 
         int[,] resultMatrix = MultiplyMatrices(matrixA, matrixB);
-        tasks.AddLast("Результат умножения матриц");
+        tasks.AddLast("Произведение матриц");
         PrintMatrix(resultMatrix);
         foreach (var task in tasks)
         {
@@ -199,7 +199,7 @@ class Program
         }
     }
 
-    // Домашнее задание 6.3: Средняя температура с использованием Dictionary
+    // Домашнее задание 6.3 Средние температуры Dictionary
     static void PerformHomework6_3()
     {
         var monthlyTemps = new Dictionary<string, double[]>();
