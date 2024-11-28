@@ -18,7 +18,7 @@ class Program
     // Упражнение 6.2 Матрицы
     static void PerformExercise6_2()
     {
-        Console.WriteLine("Введите размеры матрицы A (строки и столбцы):");
+        Console.WriteLine("Введите размеры матрицы A (строки и столбцы через enter):");
         int aRows = int.Parse(Console.ReadLine());
         int aCols = int.Parse(Console.ReadLine());
         int[,] matrixA = new int[aRows, aCols];
